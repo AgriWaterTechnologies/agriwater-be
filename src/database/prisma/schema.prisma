@@ -6,3 +6,40 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Company {
+  id        String   @id @default(uuid())
+  name      String
+  position  String
+  regions   Region[]
+  rivers    River[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("companies")
+}
+
+model Region {
+  id            String   @id @default(uuid())
+  name          String
+  centralPoint  String
+  coordinates   String
+  company       Company  @relation(fields: [companyId], references: [id])
+  companyId     String 
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("regions")
+}
+
+model River {
+  id          String   @id @default(uuid())
+  name        String
+  height      Float
+  company     Company  @relation(fields: [companyId], references: [id])
+  companyId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("rivers")
+}
