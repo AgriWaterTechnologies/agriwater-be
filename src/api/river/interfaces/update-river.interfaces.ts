@@ -4,7 +4,7 @@ import { ParseNumber } from '@/infra/core/decorators/parse-number.decorator';
 export class UpdateRiverDto {
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @IsOptional()
   @ParseNumber()

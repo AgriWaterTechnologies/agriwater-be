@@ -114,7 +114,7 @@ export class RiverRepository {
     });
   }
 
-  async updateFirst(id: string, data: UpdateRiverDto) {
+  async updateFirst(data: UpdateRiverDto) {
     const firstRiver = await this.findFirst();
     return this.prisma.river.update({
       where: {

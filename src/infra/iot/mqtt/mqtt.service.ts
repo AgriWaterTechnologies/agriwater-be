@@ -1,18 +1,18 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { MqttClient, connect } from 'mqtt';
 
 @Injectable()
-export class MqttService implements OnModuleInit {
+export class MqttService {
   private readonly logger = new Logger(MqttService.name);
   private readonly maxRetries = 5;
   private client: MqttClient;
   private retries = 0;
 
-  onModuleInit() {
+  constructor() {
     this.connectToBroker();
   }
 
-  private connectToBroker() {
+  private async connectToBroker() {
     const url = 'mqtt://broker.hivemq.com:1883';
 
     this.client = connect(url, {
