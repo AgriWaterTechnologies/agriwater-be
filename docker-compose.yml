@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: agriwater
+      POSTGRES_PASSWORD: wl9ISjaOXZHruKk
+      POSTGRES_DB: agriwater
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      - agriwater.com
+
+networks:
+  agriwater.com:
+    external: true
