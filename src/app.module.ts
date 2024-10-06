@@ -9,6 +9,7 @@ import { RiverModule } from './api/river/river.module';
 import { RegionModule } from './api/region/region.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MqttModule } from './infra/iot/mqtt/mqtt.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     CompanyModule,
     RiverModule,
     RegionModule,
+    MqttModule,
   ],
   controllers: [AppController],
   providers: [AppService],
