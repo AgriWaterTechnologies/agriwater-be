@@ -47,3 +47,11 @@ export function getCentralPoint(coord: Coordinates[]) {
     lon: (minY + maxY) / 2,
   };
 }
+
+export function parseCentralPoint(centralPoint: string) {
+  const [lat, lon] = JSON.parse(centralPoint);
+  return {
+    lat,
+    lon,
+  };
+}
